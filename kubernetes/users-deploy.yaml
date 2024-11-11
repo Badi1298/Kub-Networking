@@ -13,7 +13,21 @@ spec:
     spec:
       containers:
         - name: users-container
-          image: badi1298/kub-net-users
+          image: badi1298/kub-net-users:latest
+          imagePullPolicy: Always
+          env:
+            - name: AUTH_ADDRESS
+              value: localhost
+          resources:
+            requests:
+              memory: 256Mi
+              cpu: 250m
+            limits:
+              memory: 512Mi
+              cpu: 500m
+        - name: auth-container
+          image: badi1298/kub-net-auth:latest
+          imagePullPolicy: Always
           resources:
             requests:
               memory: 256Mi
