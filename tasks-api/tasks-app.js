@@ -3,12 +3,14 @@ const fs = require('fs');
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors')
 const axios = require('axios');
 
 const filePath = path.join(__dirname, process.env.TASKS_FOLDER, 'tasks.txt');
 
 const app = express();
 
+app.use(cors())
 app.use(bodyParser.json());
 
 const extractAndVerifyToken = async (headers) => {
